@@ -22,12 +22,32 @@ models:
         data_tests:
           - not_null
           - not_null_valid_date
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  
+  - name: fact_events_with_related_info
+    description: "Fact table for policy events with enrich information for underwriter and policy details"
     columns:
-      - name: id
-        description: "The primary key for this table"
+      - name: policy_id
+        description: "Unique identifier for the policy. One of the composite primary key columns."
         data_tests:
-          - unique
           - not_null
+      
+      - name: event_type
+        description: "Identifies the type of event. One of the composite primary key columns."
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['claim', 'contact_attempt', 'endorsement', 'renewal_offer']
+
+      - name: event_date
+        description: "The date when the event happened. One of the composite primary key columns."
+        data_tests:
+          - not_null
+          - not_null_valid_date
+
+      - name: channel_override
+        description: "Overriding channel for the event. One of the composite primary key columns."
+        data_tests:
+          - not_null
+
+
+      
