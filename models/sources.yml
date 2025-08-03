@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: iag
+    schema: mydataset
+    database: take-home-project-467809
+    tables:
+      - name: customers
+      - name: policies
+      - name: policy_events
+      - name: underwriters
