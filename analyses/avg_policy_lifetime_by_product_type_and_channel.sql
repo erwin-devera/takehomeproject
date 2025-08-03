@@ -10,17 +10,13 @@ WITH cte_policy_lifetime AS (
 )
 
 SELECT  
-  --status,
   product_type, 
-  channel, 
-  SAFE_CAST(AVG(policy_duration) AS INT64) avg_policy_lifetime,
+  channel,
   AVG(policy_duration) avg_policy_duration
 FROM cte_policy_lifetime
 GROUP BY 
-  --status,
   product_type, 
   channel
 ORDER BY
-  --status,
   product_type,
   channel
